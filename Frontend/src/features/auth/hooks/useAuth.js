@@ -34,6 +34,11 @@ export const useAuth = ()=>{
         setLoading(false);
     }
 
+    useEffect(() => {
+        handleGetMe()
+    },[])
+    
+
     return ({
         user,
         loading,
