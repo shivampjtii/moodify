@@ -85,6 +85,7 @@ async function loginUser(req,res){
 
 async function getMe(req,res){
     const user = await userModel.findById(req.user.id);
+    console.log(user)
     res.status(200).json({
         message: "User fetched successfully.",
         user
