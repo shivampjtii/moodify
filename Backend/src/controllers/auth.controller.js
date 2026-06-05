@@ -66,7 +66,10 @@ const registerController = async (req, res)=>{
 
     return res.status(201).json({
         message: "User registered successfully",
-        user
+        user:{
+            username: user.username,
+            email: user.email
+        }
     })
 }
 
@@ -81,12 +84,28 @@ const logoutController = async (req, res)=>{
 
 const getMeController = async (req, res)=>{
     const token = req.cookies.token;
-    const decoded = jwt.verify(token, process.env.JWT_SECRET)
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    const user = await userModel.findById(decoded.id);
+
+    if(!user){
+        return res.status(404).json({
+            message: "User not found"
+        })
+    }
+
+    return res.status(200).json({
+        user: {
+            username: user.username,
+            email: user.email
+        }
+    })
 }
 
 
 
 module.exports = {
     loginController,
-    registerController
+    registerController,
+    logoutController,
+    getMeController
 }
