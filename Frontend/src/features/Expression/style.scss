@@ -1,0 +1,17 @@
+.video{
+    .detect{
+        background-color: red;
+        border-radius : .5rem;
+        font-weight: 400;
+        border: none;
+        outline: none;
+        padding-block: .7rem;
+        padding-inline: .5rem;
+        cursor: pointer;
+
+        &:active{
+            scale: .97;
+        }
+    }
+}
+
