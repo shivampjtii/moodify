@@ -1,14 +1,14 @@
-const cookieParser = require("cookie-parser");
+// const cookieParser = require("cookie-parser");
 const jwt = require("jsonwebtoken");
 
-const generateToken = (id)=>{
+const generateToken = (res, id)=>{
     const token = jwt.sign({
         id
     }, process.env.JWT_SECRET, {
         expiresIn: "1d"
     })
 
-    cookieParser("token", token);
+    res.cookie("token", token)
 }
 
 module.exports = generateToken;
