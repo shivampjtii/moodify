@@ -184,7 +184,7 @@ const loginController = async(req,res)=>{
 
 const logoutController = async(req,res)=>{
     const token = req.cookies.token;
-    console.log(token)
+    // console.log(token)
     const blacklistToken = await blacklistModel.create({token});
 
     res.clearCookie("token");
