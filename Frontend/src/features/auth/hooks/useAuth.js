@@ -17,12 +17,16 @@ export const useAuth = ()=>{
         setLoading(false);
     }
     async function handleGetMe(){
-        setLoading(true);
-        console.log("hello")
-        const data = await getMe();
-        console.log("hello")
-        setUsername(data.user);
-        setLoading(false);
+        try {
+            setLoading(true);
+            const data = await getMe();
+            setUsername(data.user);
+        } catch (err) {
+            setUsername(null);
+            console.log(err.response?.data);
+        } finally {
+            setLoading(false);
+        }
     }
     async function handleLogout(){
         setLoading(true);
@@ -31,7 +35,7 @@ export const useAuth = ()=>{
         setLoading(false);
     }
 
-    useEffect(()=>{
+    useEffect( ()=>{
         handleGetMe();
     },[])
     return ({

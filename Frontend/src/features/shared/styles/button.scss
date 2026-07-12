@@ -9,4 +9,8 @@
     display: inline-block;
     font-size: 1rem;
     border-radius: .5rem;
+    transition: all 0.3ms ease-in-out;
+    &:active{
+        scale: 0.9;
+    }
 }

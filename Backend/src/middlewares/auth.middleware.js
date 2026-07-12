@@ -56,7 +56,7 @@ async function authUser(req,res,next){
 
     try{
         decoded = await jwt.verify(token, process.env.JWT_SECRET);
-        res.user = decoded;
+        req.user = decoded;
         next();
     }catch(err){
         return res.status(401).json({
