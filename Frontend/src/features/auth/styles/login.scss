@@ -33,4 +33,17 @@
             }
         }
     }
+
+    p{
+        margin-top: 1rem;
+        text-align: center;
+        a{
+            color: #e11515;
+            text-decoration: none;
+
+            &:hover{
+                text-decoration: underline;
+            }
+        }
+    }
 }

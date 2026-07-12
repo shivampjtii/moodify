@@ -144,7 +144,7 @@ const registerController = async (req, res)=>{
 const loginController = async(req,res)=>{
     const {username, email, password} = req.body;
 
-    if(!username||!password||!email){
+    if(!password||!email){
         return res.status(401).json({
             message:"All feilds are required"
         })
